@@ -1,0 +1,52 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "disks_inpeek_vm_test_northsw_098_OsDisk_1_6da873b221f44a9bb28b5a7412297495_name": {
+            "defaultValue": "inpeek-vm-test-northsw-098_OsDisk_1_6da873b221f44a9bb28b5a7412297495",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Compute/disks",
+            "apiVersion": "2023-01-02",
+            "name": "[parameters('disks_inpeek_vm_test_northsw_098_OsDisk_1_6da873b221f44a9bb28b5a7412297495_name')]",
+            "location": "switzerlandnorth",
+            "sku": {
+                "name": "Premium_LRS",
+                "tier": "Premium"
+            },
+            "properties": {
+                "osType": "Linux",
+                "hyperVGeneration": "V2",
+                "supportsHibernation": true,
+                "supportedCapabilities": {
+                    "diskControllerTypes": "SCSI, NVMe",
+                    "acceleratedNetwork": true,
+                    "architecture": "x64"
+                },
+                "creationData": {
+                    "createOption": "FromImage",
+                    "imageReference": {
+                        "id": "/Subscriptions/fbb1535f-b571-4dfb-9e01-15c9d2f93e0e/Providers/Microsoft.Compute/Locations/SwitzerlandNorth/Publishers/canonical/ArtifactTypes/VMImage/Offers/0001-com-ubuntu-server-jammy/Skus/22_04-lts-gen2/Versions/22.04.202308140"
+                    }
+                },
+                "diskSizeGB": 30,
+                "diskIOPSReadWrite": 120,
+                "diskMBpsReadWrite": 25,
+                "encryption": {
+                    "type": "EncryptionAtRestWithPlatformKey"
+                },
+                "networkAccessPolicy": "AllowAll",
+                "securityProfile": {
+                    "securityType": "TrustedLaunch"
+                },
+                "publicNetworkAccess": "Enabled",
+                "diskState": "Attached",
+                "tier": "P4"
+            }
+        }
+    ]
+}

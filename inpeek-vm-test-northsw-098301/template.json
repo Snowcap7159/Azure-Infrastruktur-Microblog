@@ -1,0 +1,70 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "networkInterfaces_inpeek_vm_test_northsw_098301_name": {
+            "defaultValue": "inpeek-vm-test-northsw-098301",
+            "type": "String"
+        },
+        "publicIPAddresses_inpeek_vm_test_northsw_098_ip_externalid": {
+            "defaultValue": "/subscriptions/fbb1535f-b571-4dfb-9e01-15c9d2f93e0e/resourceGroups/inpeek-rg-test-northsw-001/providers/Microsoft.Network/publicIPAddresses/inpeek-vm-test-northsw-098-ip",
+            "type": "String"
+        },
+        "virtualNetworks_inpeek_vnet_test_northsw_001_externalid": {
+            "defaultValue": "/subscriptions/fbb1535f-b571-4dfb-9e01-15c9d2f93e0e/resourceGroups/inpeek-rg-test-northsw-001/providers/Microsoft.Network/virtualNetworks/inpeek-vnet-test-northsw-001",
+            "type": "String"
+        },
+        "networkSecurityGroups_inpeek_vm_test_northsw_098_nsg_externalid": {
+            "defaultValue": "/subscriptions/fbb1535f-b571-4dfb-9e01-15c9d2f93e0e/resourceGroups/inpeek-rg-test-northsw-001/providers/Microsoft.Network/networkSecurityGroups/inpeek-vm-test-northsw-098-nsg",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2023-04-01",
+            "name": "[parameters('networkInterfaces_inpeek_vm_test_northsw_098301_name')]",
+            "location": "switzerlandnorth",
+            "kind": "Regular",
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "id": "[concat(resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_inpeek_vm_test_northsw_098301_name')), '/ipConfigurations/ipconfig1')]",
+                        "etag": "W/\"1a777753-8303-45d1-9a87-583e6d08d9ce\"",
+                        "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "privateIPAddress": "192.168.0.4",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[parameters('publicIPAddresses_inpeek_vm_test_northsw_098_ip_externalid')]",
+                                "properties": {
+                                    "deleteOption": "Delete"
+                                }
+                            },
+                            "subnet": {
+                                "id": "[concat(parameters('virtualNetworks_inpeek_vnet_test_northsw_001_externalid'), '/subnets/subnet_1')]"
+                            },
+                            "primary": true,
+                            "privateIPAddressVersion": "IPv4"
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": []
+                },
+                "enableAcceleratedNetworking": true,
+                "enableIPForwarding": false,
+                "disableTcpStateTracking": false,
+                "networkSecurityGroup": {
+                    "id": "[parameters('networkSecurityGroups_inpeek_vm_test_northsw_098_nsg_externalid')]"
+                },
+                "nicType": "Standard",
+                "auxiliaryMode": "None",
+                "auxiliarySku": "None"
+            }
+        }
+    ]
+}

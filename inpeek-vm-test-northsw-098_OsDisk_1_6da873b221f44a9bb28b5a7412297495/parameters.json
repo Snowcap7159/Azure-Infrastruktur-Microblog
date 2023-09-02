@@ -1,0 +1,9 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "disks_inpeek_vm_test_northsw_098_OsDisk_1_6da873b221f44a9bb28b5a7412297495_name": {
+            "value": null
+        }
+    }
+}

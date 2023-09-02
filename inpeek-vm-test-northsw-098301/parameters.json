@@ -1,0 +1,18 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "networkInterfaces_inpeek_vm_test_northsw_098301_name": {
+            "value": null
+        },
+        "publicIPAddresses_inpeek_vm_test_northsw_098_ip_externalid": {
+            "value": null
+        },
+        "virtualNetworks_inpeek_vnet_test_northsw_001_externalid": {
+            "value": null
+        },
+        "networkSecurityGroups_inpeek_vm_test_northsw_098_nsg_externalid": {
+            "value": null
+        }
+    }
+}
